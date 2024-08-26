@@ -3,46 +3,49 @@ let email = document.getElementById('email-input')
 let content = document.querySelector('.content')
 
 let password = document.getElementById('pass-input')
-let repassword = document.getElementById('repass-input')
+let passwordReEnter = document.getElementById('repass-input')
 
 
 let submitBtn = document.querySelector('.submit-btn')
-let errorMessage = document.createElement('p')
+let form = document.querySelector('form')
 
 
-let valid = false 
+let error = document.querySelector('.error-msg')
+let errorMsgs = []
 
 
-submitBtn.addEventListener('click' , function(e){
 
-    updateError()
-    errorMessage.classList.add('error')
-    content.appendChild(errorMessage)
+form.addEventListener('submit', (e) => {
 
-    validteForm()
-    if(valid == false){
-    e.preventDefault();
+    updateForm()
+
+    if(name.value === ''){
+        errorMsgs.push('name is required')
     }
+    if(email.value === ''){
+        errorMsgs.push('email is required')
+    }
+    if(password.value === '' || password.value.length <= 8){
+        errorMsgs.push('password must be more than 8 characters')
+    }
+     if(passwordReEnter.value = '' ){
+        errorMsgs.push(`passwords don't match`)
+    }
+
+
+    if(errorMsgs.length > 0){
+        e.preventDefault()
+        error.innerText = errorMsgs.join(', ')
+    }
+
+    // console.log(error.value.length);
+    console.log(errorMsgs);
+    console.log(errorMsgs.length);
 
 })
 
-function validteForm(){
-    if(name.value === ''){
-        errorMessage.textContent += ` enter your name , `
-       }
-    if(email.value === ''){
-        errorMessage.textContent += `  enter your email ,`
-       }
-    if(password.value === '' && repassword.value === ''){
-        errorMessage.textContent += ` enter you password`
-    }
-    else{
-        valid = true
-    }
-       
+function updateForm(){
+    errorMsgs = []
 }
 
-function updateError(){
-    errorMessage.textContent = ''
-}
 
