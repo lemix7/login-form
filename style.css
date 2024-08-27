@@ -58,8 +58,15 @@ body{
     display: flex;
     justify-content: center;
     /* border: 1px solid white; */
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
 }
+
+.name div , .email div , .pass-1 div , .pass-2 div{
+    display: flex;
+}
+
+
 
 .password{
     display: flex;
@@ -147,7 +154,8 @@ input:focus{
 .error-msg{
     font-size: 1.5rem;
     color: red;
-    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
     width: 350px;
     transition: all 0.5s ease-in-out;
 }
